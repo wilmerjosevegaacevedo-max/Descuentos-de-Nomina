@@ -1,0 +1,24 @@
+[2026-08-23 13:34:07] [DEBUG] Componente 'Validación de Nómina Excel' registrado en el pipeline.
+[2026-08-23 13:34:07] [DEBUG] Componente 'Cálculo de Descuentos y Costos' registrado en el pipeline.
+[2026-08-23 13:34:07] [INFO] === Iniciando Ejecución RPA LAD-6819 ===
+[2026-08-23 13:34:07] [INFO] Ejecutando componente: Validación de Nómina Excel...
+[2026-08-23 13:34:07] [INFO] Componente 'Validación de Nómina Excel' ejecutado con éxito.
+[2026-08-23 13:34:07] [INFO] Ejecutando componente: Cálculo de Descuentos y Costos...
+[2026-08-23 13:34:07] [INFO] Componente 'Cálculo de Descuentos y Costos' ejecutado con éxito.
+[2026-08-23 13:34:07] [INFO] === Proceso RPA Finalizado Con Éxito ===
+[2026-08-23 13:34:07] [DEBUG] Resultado final del contexto: {'proyecto': 'RPA LAD-6819', 'empresa': 'Blacksmith Research Colombia SAS', 'estado': 'FINALIZADO_EXITOSO', 'nomina_cargada': True, 'total_empleados': 150, 'calculos_completados': True, 'costo_empresa_total': 450000000.0}
+[2026-08-23 14:15:49] [DEBUG] Componente '1. Validación de Nómina' registrado en el pipeline.
+[2026-08-23 14:15:49] [DEBUG] Componente '2. Cálculo de Descuentos y Costos Anuales' registrado en el pipeline.
+[2026-08-23 14:15:49] [DEBUG] Componente '3. Exportación de Layouts y Compresión ZIP' registrado en el pipeline.
+[2026-08-23 14:15:49] [DEBUG] Componente '4. Notificación y Envío de Correo SMTP' registrado en el pipeline.
+[2026-08-23 14:15:49] [INFO] === Iniciando Ejecución RPA LAD-6819 ===
+[2026-08-23 14:15:49] [INFO] Ejecutando componente: 1. Validación de Nómina...
+[2026-08-23 14:15:49] [INFO] Componente '1. Validación de Nómina' ejecutado con éxito.
+[2026-08-23 14:15:49] [INFO] Ejecutando componente: 2. Cálculo de Descuentos y Costos Anuales...
+[2026-08-23 14:15:49] [INFO] Componente '2. Cálculo de Descuentos y Costos Anuales' ejecutado con éxito.
+[2026-08-23 14:15:49] [INFO] Ejecutando componente: 3. Exportación de Layouts y Compresión ZIP...
+[2026-08-23 14:15:49] [INFO] Componente '3. Exportación de Layouts y Compresión ZIP' ejecutado con éxito.
+[2026-08-23 14:15:49] [INFO] Ejecutando componente: 4. Notificación y Envío de Correo SMTP...
+[2026-08-23 14:15:49] [INFO] Componente '4. Notificación y Envío de Correo SMTP' ejecutado con éxito.
+[2026-08-23 14:15:49] [INFO] === Proceso RPA Finalizado Con Éxito ===
+[2026-08-23 14:15:49] [INFO] Estado final: FINALIZADO_EXITOSO | ZIP generado: data\output\resultado_nomina_lad_6819.zip

@@ -1,0 +1,4 @@
+id_empleado|nombre|salario_mensual|plan_vida|plan_gmm|descuento_vida_mensual|descuento_gmm_mensual|total_descuentos_mensual|salario_neto_mensual|costo_empleado_anual|costo_empresa_anual
+EMP001|Carlos Mendoza|4500000.0|COBERTURA_BÁSICA|EJECUTIVO|35000.0|280000.0|315000.0|4185000.0|50220000.0|83760000.0
+EMP002|Ana María Gómez|7200000.0|COBERTURA_PREMIUM|EJECUTIVO|85000.0|280000.0|365000.0|6835000.0|82020000.0|133008000.0
+EMP003|Jorge Ramírez|3100000.0|SIN_PLAN|BÁSICO|0.0|120000.0|120000.0|2980000.0|35760000.0|57264000.0

@@ -1,0 +1,4 @@
+id_empleado|nombre|salario_mensual|plan_vida|plan_gmm
+EMP001|Carlos Mendoza|4500000|COBERTURA_BÁSICA|EJECUTIVO
+EMP002|Ana María Gómez|7200000|COBERTURA_PREMIUM|EJECUTIVO
+EMP003|Jorge Ramírez|3100000|SIN_PLAN|BÁSICO
