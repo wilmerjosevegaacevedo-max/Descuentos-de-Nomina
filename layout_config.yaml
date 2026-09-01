@@ -1,0 +1,47 @@
+# =======================================================================
+# Archivo de Configuración y Reglas de Negocio - RPA LAD-6819
+# =======================================================================
+# Aquí se definen las reglas para detectar los correos de cada cliente,
+# las columnas obligatorias de sus archivos y parámetros de FTP.
+
+global:
+  limite_tamano_archivo_mb: 25
+  formatos_permitidos: [".xlsx", ".xls", ".csv"]
+  notificar_errores_validacion: true
+
+clientes:
+  cdf:
+    activo: true
+    deteccion:
+      palabras_clave_asunto: ["nomina cdf", "reporte cdf", "pago cdf"]
+      dominios_remitente: ["cdf.com", "recursos-cdf.net", "admin.com"]
+      patron_archivo: "*.xlsx"
+    validacion:
+      columnas_obligatorias: ["CEDULA", "NOMBRE", "ESTADO", "SALARIO"]
+      ignorar_filas_vacias: true
+    ftp:
+      subcarpeta_remota: "entradas_cdf"
+
+  continental:
+    activo: true
+    deteccion:
+      palabras_clave_asunto: ["nomina continental", "continental hrr", "cont"]
+      dominios_remitente: ["continental-corp.com", "hr-conti.net"]
+      patron_archivo: "Conti_*.xlsx"
+    validacion:
+      columnas_obligatorias: ["ID", "NOMBRE", "DEPARTAMENTO", "SALARIO"]
+      ignorar_filas_vacias: true
+    ftp:
+      subcarpeta_remota: "rrhh_continental"
+
+  dxc:
+    activo: true
+    deteccion:
+      palabras_clave_asunto: ["reporte dxc", "nomina dxc", "dxc global"]
+      dominios_remitente: ["dxc.com", "dxc-payroll.com"]
+      patron_archivo: "DXC_*.xlsx"
+    validacion:
+      columnas_obligatorias: ["ID", "NOMBRE", "PAGO_NETO", "IMPUESTOS", "SEGURO"]
+      ignorar_filas_vacias: true
+    ftp:
+      subcarpeta_remota: "inbound_dxc"

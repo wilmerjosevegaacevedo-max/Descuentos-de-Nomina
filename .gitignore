@@ -1,0 +1,38 @@
+# Entorno virtual
+venv/
+.venv/
+env/
+
+# Variables de entorno (secretos)
+.env
+
+# Archivos procesados
+files/
+
+# Imágenes
+IMG/
+
+# Logs
+logs/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Datos y archivos temporales
+records_data.json
+*.zip
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.suo
+
+# Datos de referencia (archivos Excel locales)
+Derechos_Poliza.xlsx
+Homologacion_Empresa.xlsx
+layout_config copy.json
