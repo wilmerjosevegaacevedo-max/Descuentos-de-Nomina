@@ -88,6 +88,10 @@ def limpiar_archivos_temporales(directorio_base: str = "files", dias_antiguedad:
         archivos_borrados = 0
         
         for root, dirs, files in os.walk(directorio_base, topdown=False):
+            # Omitir la carpeta de plantillas de correo para no borrarlas por accidente
+            if "templates" in root.lower():
+                continue
+                
             # Borrar archivos viejos
             for name in files:
                 ruta_archivo = os.path.join(root, name)

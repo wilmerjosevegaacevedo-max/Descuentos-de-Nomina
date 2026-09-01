@@ -159,6 +159,9 @@ def main():
     else:
         modo_buzon()
         
+    # Ejecutar autolimpieza de disco para borrar excels procesados de más de 7 días
+    limpiar_archivos_temporales(directorio_base=env.files_base_path, dias_antiguedad=7)
+        
     logger.info("=== FIN DE EJECUCIÓN ===")
     logger.separador(char="=", longitud=50)
     

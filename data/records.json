@@ -26,11 +26,11 @@
         },
         {
             "id": "10",
-            "fecha": "2026-08-31 23:47:03",
-            "cliente": "cdf",
-            "asunto": "Fw: nómina cdf",
+            "fecha": "2026-09-01 08:26:42",
+            "cliente": "DESCONOCIDO",
+            "asunto": "[RPA LAD-6819] Resultado de procesamiento - CDF - FALLIDO",
             "estado": "FALLIDO",
-            "mensaje": ""
+            "mensaje": "Cliente no identificado"
         },
         {
             "id": "9",
