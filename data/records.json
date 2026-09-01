@@ -15,6 +15,30 @@
             "asunto": "Fw: nómina cdf",
             "estado": "FALLIDO",
             "mensaje": ""
+        },
+        {
+            "id": "8",
+            "fecha": "2026-08-31 23:33:48",
+            "cliente": "cdf",
+            "asunto": "Nómina cdf",
+            "estado": "FALLIDO",
+            "mensaje": ""
+        },
+        {
+            "id": "10",
+            "fecha": "2026-08-31 23:47:03",
+            "cliente": "cdf",
+            "asunto": "Fw: nómina cdf",
+            "estado": "FALLIDO",
+            "mensaje": ""
+        },
+        {
+            "id": "9",
+            "fecha": "2026-08-31 23:47:08",
+            "cliente": "cdf",
+            "asunto": "Fw: nómina cdf",
+            "estado": "FALLIDO",
+            "mensaje": ""
         }
     ]
 }

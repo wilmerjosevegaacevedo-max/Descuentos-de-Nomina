@@ -98,7 +98,16 @@ def modo_buzon():
             resultado = procesar_archivo_cliente(nombre_cliente, archivo)
             
             # 3. Preparar Notificación
-            mensaje_html = resultado.get("error") if not resultado["exito"] else "Los archivos fueron procesados y validados correctamente."
+            if not resultado["exito"]:
+                mensaje_html = f'{resultado.get("error")}<br><br><b>Nota de Sistema:</b> Se adjunta a este correo la plantilla de Excel con la estructura exacta requerida para su referencia.'
+                exito_total = False
+                
+                # Buscar plantilla de ejemplo para el cliente
+                plantilla_path = Path(env.files_base_path) / "templates" / f"plantilla_{nombre_cliente}.xlsx"
+                adjunto_final = str(plantilla_path) if plantilla_path.exists() else None
+            else:
+                mensaje_html = "Los archivos fueron procesados y validados correctamente."
+                adjunto_final = resultado.get("archivo_zip")
             
             # 4. Enviar reporte SMTP
             email_svc.enviar_reporte(
@@ -107,11 +116,8 @@ def modo_buzon():
                 batch_id=resultado.get("batch_id", "N/A"),
                 exito=resultado["exito"],
                 mensaje=mensaje_html,
-                archivo_adjunto=resultado.get("archivo_zip")
+                archivo_adjunto=adjunto_final
             )
-            
-            if not resultado["exito"]:
-                exito_total = False
         
         # 5. Registrar en la bitácora JSON y mover en el buzón Exchange
         estado_final = "EXITOSO" if exito_total else "FALLIDO"
