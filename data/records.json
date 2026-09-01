@@ -1,3 +1,20 @@
 {
-    "procesados": []
+    "procesados": [
+        {
+            "id": "6",
+            "fecha": "2026-08-31 23:09:07",
+            "cliente": "cdf",
+            "asunto": "Fw: nómina cdf",
+            "estado": "EXITOSO",
+            "mensaje": ""
+        },
+        {
+            "id": "7",
+            "fecha": "2026-08-31 23:27:23",
+            "cliente": "cdf",
+            "asunto": "Fw: nómina cdf",
+            "estado": "FALLIDO",
+            "mensaje": ""
+        }
+    ]
 }
