@@ -15,6 +15,25 @@ try:
 except ImportError:
     HAS_COLORAMA = False
 
+# --- EXTENSIÓN PERSONALIZADA DE LOGGING ---
+# Añadir nivel SUCCESS
+SUCCESS_LEVEL = 25
+logging.addLevelName(SUCCESS_LEVEL, "SUCCESS")
+
+def success(self, message, *args, **kws):
+    if self.isEnabledFor(SUCCESS_LEVEL):
+        self._log(SUCCESS_LEVEL, message, args, **kws)
+logging.Logger.success = success
+
+def seccion(self, message, *args, **kws):
+    self.info(f"\n>>>>> {message.upper()} <<<<<", *args, **kws)
+logging.Logger.seccion = seccion
+
+def separador(self, char="=", longitud=50, *args, **kws):
+    self.info(char * longitud, *args, **kws)
+logging.Logger.separador = separador
+# ------------------------------------------
+
 # Crear directorio de logs si no existe
 LOG_DIR = Path("logs")
 LOG_DIR.mkdir(exist_ok=True)
@@ -25,6 +44,7 @@ class LogFormatter(logging.Formatter):
     COLORS = {
         logging.DEBUG: Fore.CYAN if HAS_COLORAMA else "",
         logging.INFO: Fore.WHITE if HAS_COLORAMA else "",
+        SUCCESS_LEVEL: Fore.GREEN if HAS_COLORAMA else "",
         logging.WARNING: Fore.YELLOW if HAS_COLORAMA else "",
         logging.ERROR: Fore.RED if HAS_COLORAMA else "",
         logging.CRITICAL: Fore.RED + Style.BRIGHT if HAS_COLORAMA else ""
@@ -37,7 +57,6 @@ class LogFormatter(logging.Formatter):
         # Formato: [YYYY-MM-DD HH:MM:SS] [NIVEL] - Mensaje
         log_fmt = f"[{self.formatTime(record, '%Y-%m-%d %H:%M:%S')}] {color}[{record.levelname:^8}]{reset} - {record.getMessage()}"
         return log_fmt
-
 
 class GestorLogs:
     _instancia = None
@@ -52,30 +71,26 @@ class GestorLogs:
         self.logger = logging.getLogger("RPA_LAD_6819")
         self.logger.setLevel(logging.DEBUG)
         
-        # Evitar duplicidad de handlers si se instancia varias veces
         if not self.logger.handlers:
             # 1. Handler para consola (con colores)
             console_handler = logging.StreamHandler()
             console_handler.setLevel(logging.DEBUG)
             console_handler.setFormatter(LogFormatter())
             
-            # 2. Handler para archivo (rotación diaria simple)
+            # 2. Handler para archivo
             hoy = datetime.now().strftime("%Y-%m-%d")
             archivo_log = LOG_DIR / f"rpa_{hoy}.log"
             
             file_handler = logging.FileHandler(archivo_log, encoding='utf-8')
             file_handler.setLevel(logging.INFO)
-            # Formato plano para el archivo
             file_fmt = logging.Formatter("[%(asctime)s] [%(levelname)s] - %(message)s", "%Y-%m-%d %H:%M:%S")
             file_handler.setFormatter(file_fmt)
             
             self.logger.addHandler(console_handler)
             self.logger.addHandler(file_handler)
-
+            
     def get_logger(self):
         return self.logger
 
-# Función de conveniencia global
 def get_logger():
-    """Retorna la instancia del logger configurado"""
     return GestorLogs().get_logger()

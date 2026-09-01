@@ -14,6 +14,7 @@ from config.environment import env
 from services.mailbox import MailboxService
 from services.email import EmailService
 from clients import CLIENT_MAP
+from utils import cargar_configuracion_yaml, identificar_cliente, limpiar_archivos_temporales
 from records_data import ProcessTracker
 
 logger = get_logger()
@@ -97,9 +98,6 @@ def modo_buzon():
             resultado = procesar_archivo_cliente(nombre_cliente, archivo)
             
             # 3. Preparar Notificación
-            # En producción, 'correo.sender' en exchangelib tiene email_address
-            remitente = correo.sender.email_address if hasattr(correo.sender, 'email_address') else env.admin_email
-            
             mensaje_html = resultado.get("error") if not resultado["exito"] else "Los archivos fueron procesados y validados correctamente."
             
             # 4. Enviar reporte SMTP
@@ -141,7 +139,7 @@ def modo_manual(cliente: str, archivo: str):
 
 def main():
     parser = argparse.ArgumentParser(description="Orquestador Bot RPA LAD-6819")
-    parser.add_argument("--cliente", type=str, help="Fuerza la ejecución manual para un cliente específico (ej. cdf, continental, dxc)")
+    parser.add_argument("--cliente", type=str, help="Fuerza la ejecución manual para un cliente específico")
     parser.add_argument("--archivo", type=str, help="Ruta local del archivo Excel a procesar en modo manual")
     args = parser.parse_args()
 
@@ -157,7 +155,11 @@ def main():
         
     logger.info("=== FIN DE EJECUCIÓN ===")
     logger.separador(char="=", longitud=50)
-    logger.get_logger().cerrar() # Cerramos limpiamente el archivo log
+    
+    # Cerramos limpiamente el log si tiene el método
+    log_inst = logger.get_logger() if hasattr(logger, 'get_logger') else logger
+    if hasattr(log_inst, 'cerrar'):
+        log_inst.cerrar()
 
 if __name__ == "__main__":
     try:
