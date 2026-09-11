@@ -10,6 +10,7 @@ import os
 from datetime import datetime
 from pathlib import Path
 from registro_log import get_logger
+from services.firebase_service import guardar_log_nube
 
 logger = get_logger()
 
@@ -94,3 +95,4 @@ class ProcessTracker:
         data["procesados"] = procesados
         self._guardar_registros(data)
         logger.debug(f"Bitácora actualizada -> ID: {item_id[:15]}... | Cliente: {cliente} | Estado: {estado}")
+        guardar_log_nube(item_id, cliente, estado, mensaje)

@@ -36,3 +36,6 @@ records_data.json
 Derechos_Poliza.xlsx
 Homologacion_Empresa.xlsx
 layout_config copy.json
+
+firebase-key.json
+fix_firebase.py
