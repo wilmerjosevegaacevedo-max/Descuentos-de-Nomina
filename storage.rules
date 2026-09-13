@@ -1,0 +1,14 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /jobs/{userId}/{jobId}/entrada/{fileName} {
+      allow read, write: if request.auth != null
+        && request.auth.uid == userId;
+    }
+    match /jobs/{userId}/{jobId}/salida/{fileName} {
+      allow read: if request.auth != null
+        && request.auth.uid == userId;
+      allow write: if false;
+    }
+  }
+}
