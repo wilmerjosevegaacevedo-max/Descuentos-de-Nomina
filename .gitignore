@@ -39,3 +39,19 @@ layout_config copy.json
 
 firebase-key.json
 fix_firebase.py
+crear_usuario.py
+
+# Frontend - Node
+node_modules/
+frontend/node_modules/
+
+# Frontend - Build
+dist/
+frontend/dist/
+
+# Frontend - TypeScript build info
+*.tsbuildinfo
+frontend/*.tsbuildinfo
+
+# Frontend - env
+frontend/.env
