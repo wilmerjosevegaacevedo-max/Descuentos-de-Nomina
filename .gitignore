@@ -38,6 +38,7 @@ Homologacion_Empresa.xlsx
 layout_config copy.json
 
 firebase-key.json
+firebase-service-account.json
 fix_firebase.py
 crear_usuario.py
 
