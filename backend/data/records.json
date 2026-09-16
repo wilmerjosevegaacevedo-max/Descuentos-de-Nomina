@@ -26,7 +26,7 @@
         },
         {
             "id": "10",
-            "fecha": "2026-09-01 08:26:42",
+            "fecha": "2026-09-03 23:25:51",
             "cliente": "DESCONOCIDO",
             "asunto": "[RPA LAD-6819] Resultado de procesamiento - CDF - FALLIDO",
             "estado": "FALLIDO",
@@ -34,10 +34,26 @@
         },
         {
             "id": "9",
-            "fecha": "2026-08-31 23:47:08",
-            "cliente": "cdf",
-            "asunto": "Fw: nómina cdf",
+            "fecha": "2026-09-10 19:04:19",
+            "cliente": "DESCONOCIDO",
+            "asunto": "[RPA LAD-6819] Resultado de procesamiento - CDF - FALLIDO",
             "estado": "FALLIDO",
+            "mensaje": "Cliente no identificado"
+        },
+        {
+            "id": "12",
+            "fecha": "2026-09-10 19:35:59",
+            "cliente": "cdf",
+            "asunto": "nomina cdf",
+            "estado": "EXITOSO",
+            "mensaje": ""
+        },
+        {
+            "id": "13",
+            "fecha": "2026-09-14 18:28:26",
+            "cliente": "cdf",
+            "asunto": "Fwd: nomina cdf",
+            "estado": "EXITOSO",
             "mensaje": ""
         }
     ]

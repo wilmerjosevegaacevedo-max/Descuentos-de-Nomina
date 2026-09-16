@@ -44,7 +44,7 @@ El flujo completo consta de 6 pasos orquestados con patrón **Template Method**:
 
 ---
 
-## 📁 Estructura de Directorios
+## 📁 Estructura de Directorios (Backend)
 
 ```text
 rpa_lad_6819/
@@ -54,11 +54,6 @@ rpa_lad_6819/
 │   ├── email/               # Servicio SMTP y plantillas HTML
 │   ├── mailbox/             # Conexión Gmail IMAP
 │   └── firebase_service.py  # Conector a Firebase Firestore
-├── frontend/                # Dashboard Web (React + TypeScript + Vite)
-│   └── src/
-│       ├── App.tsx          # Pantalla principal
-│       ├── firebase.ts      # Conexión Firebase web
-│       └── components/      # Componentes: Dashboard, Login, KPIs, etc.
 ├── data/                    # (Auto) Bitácora JSON anti-duplicados
 ├── logs/                    # (Auto) Historial de ejecución (.log)
 ├── files/
@@ -75,6 +70,8 @@ rpa_lad_6819/
 ├── ejecutar_rpa.bat         # Lanzador para Windows Task Scheduler
 └── Dockerfile               # Contenedorizado para despliegue en la nube
 ```
+
+> **🌐 Nota Frontend:** El código del Dashboard Web en React se separó a su propio repositorio. Puedes encontrarlo en: [frontedRPEA](https://github.com/wilmerjosevegaacevedo-max/frontedRPEA)
 
 ---
 
@@ -109,30 +106,7 @@ rpa_lad_6819/
 5. **Configurar Firebase**:
    Descarga la llave privada de Firebase Console (Configuración → Cuentas de servicio → Generar nueva clave privada) y guárdala como `firebase-key.json` en la raíz del proyecto.
 
-### Frontend (Dashboard Web)
-
-1. **Instalar dependencias**:
-   ```powershell
-   cd frontend
-   npm install
-   ```
-
-2. **Configurar Firebase web**:
-   Copia `frontend/.env.example` → `frontend/.env` y rellena con las credenciales de tu proyecto Firebase:
-   ```env
-   VITE_API_URL=http://localhost:8000
-   VITE_FIREBASE_API_KEY=...
-   VITE_FIREBASE_AUTH_DOMAIN=...
-   VITE_FIREBASE_PROJECT_ID=...
-   VITE_FIREBASE_STORAGE_BUCKET=...
-   VITE_FIREBASE_APP_ID=...
-   ```
-
-3. **Arrancar el Dashboard**:
-   ```powershell
-   npm run dev
-   ```
-   Abre **http://localhost:5173** en tu navegador.
+> Para instalar y correr el Dashboard Web, dirígete a su [repositorio oficial](https://github.com/wilmerjosevegaacevedo-max/frontedRPEA).
 
 ---
 
