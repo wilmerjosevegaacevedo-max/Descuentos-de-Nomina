@@ -3,13 +3,21 @@
 from pathlib import Path
 
 from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from firebase_admin import auth
 
+from config.environment import env
 from firebase_service import firebase_service
-from main import procesar_archivo_cliente
 
 app = FastAPI(title="RPA LAD-6819 API", version="1.0.0")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=list(env.frontend_origins),
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Authorization", "Content-Type"],
+)
 bearer = HTTPBearer()
 
 
@@ -40,6 +48,8 @@ def ejecutar_trabajo(job_id: str) -> None:
             raise ValueError("No se encontró la ruta del archivo de entrada en el trabajo.")
 
         firebase_service.download_input(job_id, archivo_entrada, input_path)
+        from main import procesar_archivo_cliente
+
         resultado = procesar_archivo_cliente(job["cliente"], str(input_path))
         values = {
             "estado": "EXITOSO" if resultado["exito"] else "FALLIDO",
