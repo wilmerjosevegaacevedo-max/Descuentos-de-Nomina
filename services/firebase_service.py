@@ -55,12 +55,12 @@ def guardar_log_nube(correo_id: str, cliente: str, estado: str, error: str = "")
         inicializar_firebase()
     if _db:
         try:
-            doc_ref = _db.collection("ejecuciones_rpa").document(correo_id)
+            doc_ref = _db.collection("jobs").document(correo_id)
             doc_ref.set({
                 "cliente": cliente,
-                "estado": estado,
+                "estado": estado, "nombreArchivo": f"Lote_Correo_{correo_id[:6]}",
                 "error": error,
-                "fecha": firestore.SERVER_TIMESTAMP
+                "creadoEn": firestore.SERVER_TIMESTAMP
             })
         except Exception as e:
             logger.error(f"Error guardando log en la nube: {e}")
