@@ -59,7 +59,7 @@ def guardar_log_nube(correo_id: str, cliente: str, estado: str, error: str = "")
             doc_ref.set({
                 "cliente": cliente,
                 "estado": estado, "nombreArchivo": f"Lote_Correo_{correo_id[:6]}",
-                "error": error,
+                "error": error, "usuarioId": "7bpFEXmiBRUkXcuvEzSaajR8hIg2",
                 "creadoEn": firestore.SERVER_TIMESTAMP
             })
         except Exception as e:
