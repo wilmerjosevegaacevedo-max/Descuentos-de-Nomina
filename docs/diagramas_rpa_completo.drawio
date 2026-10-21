@@ -1,0 +1,321 @@
+<mxfile host="app.diagrams.net" modified="2026-10-12T23:00:00.000Z" agent="Antigravity" version="24.7.17" type="device">
+  <!-- ===================================================================== -->
+  <!-- PÁGINA 1: 4.3 DIAGRAMA DE DESPLIEGUE (ESTILO UML OSCURO CON CUBOS 3D) -->
+  <!-- ===================================================================== -->
+  <diagram id="despliegue-uml" name="4.3 Diagrama de Despliegue">
+    <mxGraphModel dx="1850" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" background="#111318" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TÍTULO -->
+        <mxCell id="title-dep" value="DIAGRAMA DE DESPLIEGUE – SISTEMA WEB RPA LAD-6819" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=22;fontStyle=1;fontColor=#ffffff;letterSpacing=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="20" width="1000" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- NODO 1: ESTACIÓN DE TRABAJO DEL USUARIO -->
+        <mxCell id="node-client" value="&lt;i&gt;«device»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Estación de Trabajo del Usuario&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#93c5fd;&quot;&gt;(PC / Portátil - Analista / Supervisor / Admin)&lt;/font&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.15;darkOpacity2=0.25;size=18;verticalAlign=top;align=center;fillColor=#172554;strokeColor=#3b82f6;fontColor=#ffffff;fontSize=12;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="340" height="330" as="geometry" />
+        </mxCell>
+
+        <!-- Execution Environment: Navegador Web -->
+        <mxCell id="exec-browser" value="&lt;i&gt;«execution environment»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Navegador Web (Chrome / Firefox / Edge)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=5 5;verticalAlign=top;align=center;fillColor=#0f172a;strokeColor=#60a5fa;fontColor=#bfdbfe;fontSize=11;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="60" y="160" width="290" height="235" as="geometry" />
+        </mxCell>
+
+        <!-- Componente SPA Frontend -->
+        <mxCell id="comp-spa" value="&lt;i&gt;«artifact / componente»&lt;/i&gt;&lt;br&gt;&lt;b&gt;SPA Frontend (frontedRPEA)&lt;/b&gt;&lt;br&gt;(React 18 + Vite + TypeScript + Tailwind)&lt;br&gt;— &lt;b&gt;OrquestadorWeb&lt;/b&gt; —&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#cbd5e1;&quot;&gt;(LoginScreen, Dashboard, JobsTable,&lt;br&gt;SelectorAliados, CargaArchivos, FiltroTiempoReal)&lt;/font&gt;" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#090d16;strokeColor=#93c5fd;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="78" y="210" width="255" height="165" as="geometry" />
+        </mxCell>
+
+        <!-- NODO 2: NUBE VERCEL Y FIREBASE (GOOGLE CLOUD) -->
+        <mxCell id="node-firebase" value="&lt;i&gt;«device / cloud service»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Firebase (Google Cloud) + Vercel CDN&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#fcd34d;&quot;&gt;(Proyecto: rpa-nomina-oficial / fronted-rpea.vercel.app)&lt;/font&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.15;darkOpacity2=0.25;size=18;verticalAlign=top;align=center;fillColor=#422006;strokeColor=#d97706;fontColor=#ffffff;fontSize=12;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="500" y="90" width="360" height="330" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comp-auth" value="&lt;i&gt;«componente cloud»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Firebase Authentication&lt;/b&gt;&lt;br&gt;— Gestión de Sesiones JWT y UID (usuarioId) —" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#14120e;strokeColor=#f59e0b;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="525" y="160" width="300" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comp-firestore" value="&lt;i&gt;«componente bd»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Cloud Firestore (BD NoSQL)&lt;/b&gt;&lt;br&gt;— Colección 'jobs' / Estado en Tiempo Real / KPIs —&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#fde68a;&quot;&gt;(Firestore Security Rules por usuarioId)&lt;/font&gt;" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#14120e;strokeColor=#f59e0b;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="525" y="245" width="300" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comp-fbstorage" value="&lt;i&gt;«componente cloud»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Firebase Storage &amp; Vercel Edge CDN&lt;/b&gt;&lt;br&gt;(CargaArchivos / Hosting Estático SPA)" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#14120e;strokeColor=#f59e0b;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="525" y="340" width="300" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- NODO 3: SERVIDOR DE APLICACIÓN - API BACKEND (FASTAPI) -->
+        <mxCell id="node-api" value="&lt;i&gt;«device / server»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Servidor de Aplicación – API Backend (FastAPI)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#86efac;&quot;&gt;(api.py - Uvicorn / Python 3.12)&lt;/font&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.15;darkOpacity2=0.25;size=18;verticalAlign=top;align=center;fillColor=#064e3b;strokeColor=#10b981;fontColor=#ffffff;fontSize=12;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="980" y="90" width="370" height="360" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comp-api-ctrl" value="&lt;i&gt;«componente»&lt;/i&gt;&lt;br&gt;&lt;b&gt;API / Controladores (api.py)&lt;/b&gt;&lt;br&gt;(OrquestadorAPI, DespachoManualLotes,&lt;br&gt;ReintentoProcesamiento, ConsultaEstado)" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#091914;strokeColor=#34d399;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="1005" y="160" width="310" height="75" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comp-api-cfg" value="&lt;i&gt;«componente infra»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Configuración (config/environment.py)&lt;/b&gt;&lt;br&gt;(Variables .env y layout_config.yaml)" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#091914;strokeColor=#34d399;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="1005" y="250" width="310" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comp-api-utils" value="&lt;i&gt;«componente infra»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Utilidades / Gestor de Archivos (utils.py)&lt;/b&gt;" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#091914;strokeColor=#34d399;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="1005" y="315" width="310" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comp-api-logs" value="&lt;i&gt;«componente infra»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Trazabilidad / Logs (firebase_service.py)&lt;/b&gt;" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#091914;strokeColor=#34d399;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="1005" y="375" width="310" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- NODO 4: SERVIDOR MOTOR RPA (PYTHON) -->
+        <mxCell id="node-rpa" value="&lt;i&gt;«device / server»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Servidor Motor RPA (Python 3.12 + Pandas)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#fde047;&quot;&gt;(Orquestador: ejecutar_rpa.bat / main.py)&lt;/font&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.15;darkOpacity2=0.25;size=18;verticalAlign=top;align=center;fillColor=#3f2e05;strokeColor=#ca8a04;fontColor=#ffffff;fontSize=12;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="1470" y="90" width="400" height="390" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comp-rpa-core" value="&lt;i&gt;«componente»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Motor RPA Principal&lt;/b&gt;&lt;br&gt;main.py / base_client.py (BaseClient - Template Method)" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#1a1507;strokeColor=#eab308;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="1495" y="155" width="340" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comp-rpa-clients" value="&lt;i&gt;«componente»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Clientes Específicos (clients/ - CLIENT_MAP)&lt;/b&gt;&lt;br&gt;cdf.py (CDF) · continental.py (Continental) · dxc.py (DXC Tech)&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#fef08a;&quot;&gt;(Validación de cédulas, topes Vida, GMM y Costos)&lt;/font&gt;" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#1a1507;strokeColor=#eab308;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="1495" y="225" width="340" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comp-rpa-cfg" value="&lt;i&gt;«componente infra»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Configuración YAML (layout_config.yaml)&lt;/b&gt;" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#1a1507;strokeColor=#eab308;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="1495" y="305" width="340" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comp-rpa-utils" value="&lt;i&gt;«componente infra»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Utilidades / Autolimpieza 7 días (utils.py)&lt;/b&gt;" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#1a1507;strokeColor=#eab308;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="1495" y="360" width="340" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comp-rpa-int" value="&lt;i&gt;«componente infra»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Logs (ProcessTracker) / Integraciones (Mailbox, Email, FTP)&lt;/b&gt;" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#1a1507;strokeColor=#eab308;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="1495" y="415" width="340" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- NODO 5: ALMACENAMIENTO DE ARCHIVOS LOCAL -->
+        <mxCell id="node-storage" value="&lt;i&gt;«device / storage»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Almacenamiento de Archivos Local (SSD)&lt;/b&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.15;darkOpacity2=0.25;size=18;verticalAlign=top;align=center;fillColor=#1f2937;strokeColor=#6b7280;fontColor=#ffffff;fontSize=12;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="500" y="610" width="350" height="190" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comp-local-fs" value="&lt;i&gt;«componente»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Almacenamiento de Archivos (files/ y data/)&lt;/b&gt;&lt;br&gt;Excel (.xlsx) / TXT / Paquetes Salida (.zip)&lt;br&gt;(Política de depuración &gt; 7 días)" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#111827;strokeColor=#9ca3af;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="525" y="675" width="295" height="95" as="geometry" />
+        </mxCell>
+
+        <!-- NODO 6: REPOSITORIO DE LOGS Y BITÁCORA -->
+        <mxCell id="node-logs" value="&lt;i&gt;«device / log repository»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Bitácora de Auditoría y Métricas&lt;/b&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.15;darkOpacity2=0.25;size=18;verticalAlign=top;align=center;fillColor=#451a1c;strokeColor=#ef4444;fontColor=#ffffff;fontSize=12;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="980" y="610" width="370" height="190" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comp-log-repo" value="&lt;i&gt;«componente»&lt;/i&gt;&lt;br&gt;&lt;b&gt;BD de Logs / Métricas (records.json &amp; logs/)&lt;/b&gt;&lt;br&gt;Control de duplicados (ProcessTracker)&lt;br&gt;y espejo hacia Firestore ('jobs')" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#1f0d0e;strokeColor=#f87171;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="1005" y="675" width="310" height="95" as="geometry" />
+        </mxCell>
+
+        <!-- NODO 7: SERVICIOS EXTERNOS (CORREO GMAIL IMAP/SMTP Y FTP) -->
+        <mxCell id="node-ext" value="&lt;i&gt;«device / servicios externos»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Servicios Externos (Correo &amp; FTP Aliados)&lt;/b&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.15;darkOpacity2=0.25;size=18;verticalAlign=top;align=center;fillColor=#2e1065;strokeColor=#a855f7;fontColor=#ffffff;fontSize=12;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="1470" y="610" width="400" height="220" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comp-ext-mail" value="&lt;i&gt;«componente externo»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Servidor Gmail Corporativo (IMAP:993 / SMTP:587)&lt;/b&gt;&lt;br&gt;(rpalad6819@gmail.com) — MailboxService / EmailService" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#170936;strokeColor=#c084fc;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="1495" y="670" width="340" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comp-ext-ftp" value="&lt;i&gt;«componente externo»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Servidor FTP Corporativo — ConexionFtp.py&lt;/b&gt;&lt;br&gt;(Transferencia segura de layouts procesados)" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#170936;strokeColor=#c084fc;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="1495" y="750" width="340" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ================================================================= -->
+        <!-- RUTAS DE COMUNICACIÓN (FLECHAS CON PROTOCOLO Y ENTRA/SALE)        -->
+        <!-- ================================================================= -->
+
+        <!-- 1. Estación de Trabajo <-> Firebase -->
+        <mxCell id="edge-client-fb" value="&lt;b&gt;«HTTPS / WSS (onSnapshot)»&lt;/b&gt;&lt;br&gt;Auth, Firestore ('jobs'), Storage&lt;br&gt;&lt;font color=&quot;#93c5fd&quot;&gt;entra: credenciales / filtro usuarioId&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#fde047&quot;&gt;sale: token JWT / lotes en tiempo real&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;startArrow=open;startFill=0;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#111318;" edge="1" parent="1" source="node-client" target="node-firebase">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="290" />
+              <mxPoint x="440" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 2. Estación de Trabajo -> API Backend -->
+        <mxCell id="edge-client-api" value="&lt;b&gt;«HTTPS / REST»&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#93c5fd&quot;&gt;entra: archivo Excel/CSV, aliado, token&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#86efac&quot;&gt;sale: estado de despacho, respuesta JSON&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#111318;" edge="1" parent="1" source="node-client" target="node-api">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="210" y="60" />
+              <mxPoint x="1165" y="60" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 3. API Backend <-> Motor RPA -->
+        <mxCell id="edge-api-rpa" value="&lt;b&gt;«REST interno / IPC»&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#86efac&quot;&gt;entra: parámetros de ejecución y ruta&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#fde047&quot;&gt;sale: layout procesado (.zip), métricas&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#111318;" edge="1" parent="1" source="node-api" target="node-rpa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 4. Motor RPA -> Firebase Firestore -->
+        <mxCell id="edge-rpa-fb" value="&lt;b&gt;«HTTPS / Firebase Admin SDK»&lt;/b&gt;&lt;br&gt;guardar_log_nube() con firebase-key.json&lt;br&gt;&lt;font color=&quot;#fde047&quot;&gt;entra: estado (EXITOSO/FALLIDO), usuarioId, fecha&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;strokeColor=#f59e0b;strokeWidth=1.5;fontColor=#fde68a;fontSize=10;labelBackgroundColor=#111318;" edge="1" parent="1" source="node-rpa" target="node-firebase">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1670" y="510" />
+              <mxPoint x="680" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 5. API Backend y Motor RPA -> Almacenamiento Local -->
+        <mxCell id="edge-api-storage" value="&lt;b&gt;«I/O Sistema de Archivos - acceso»&lt;/b&gt;&lt;br&gt;lectura/escritura Excel, TXT y ZIP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#111318;" edge="1" parent="1" source="node-api" target="node-storage">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1080" y="555" />
+              <mxPoint x="675" y="555" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="edge-rpa-storage" value="&lt;b&gt;«I/O Local - acceso»&lt;/b&gt;&lt;br&gt;entra/sale: Excel crudo y ZIP consolidado" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#111318;" edge="1" parent="1" source="node-rpa" target="node-storage">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1550" y="555" />
+              <mxPoint x="675" y="555" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 6. API y Motor RPA -> Bitácora de Logs -->
+        <mxCell id="edge-api-logs" value="&lt;b&gt;«JSON / File I/O - acceso»&lt;/b&gt;&lt;br&gt;registros de log y auditoría" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#111318;" edge="1" parent="1" source="node-api" target="node-logs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge-rpa-logs" value="&lt;b&gt;«JSON / ProcessTracker - acceso»&lt;/b&gt;&lt;br&gt;entra/sale: control de duplicados y métricas" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#111318;" edge="1" parent="1" source="node-rpa" target="node-logs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1610" y="840" />
+              <mxPoint x="1165" y="840" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 7. Motor RPA <-> Servicios Externos -->
+        <mxCell id="edge-rpa-ext" value="&lt;b&gt;«IMAP:993 / SMTP:587 / FTP - acceso»&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#d8b4fe&quot;&gt;entra: correos con planillas Excel adjuntas&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#fde047&quot;&gt;sale: correo con ZIP procesado / subida FTP&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;startArrow=open;startFill=0;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#111318;" edge="1" parent="1" source="node-rpa" target="node-ext">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- LEYENDA: SÍMBOLOS DEL DIAGRAMA -->
+        <mxCell id="legend-dep" value="&lt;b&gt;SÍMBOLOS DEL DIAGRAMA (NOTACIÓN UML 2.5)&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;b&gt;[Cubo 3D]&lt;/b&gt; = Nodo de despliegue (&lt;i&gt;«device»&lt;/i&gt;, &lt;i&gt;«server»&lt;/i&gt;, &lt;i&gt;«cloud service»&lt;/i&gt;, &lt;i&gt;«storage»&lt;/i&gt;)&lt;br&gt;• &lt;b&gt;[Rectángulo con 2 pestañas laterales]&lt;/b&gt; = Componente o artefacto desplegado dentro del nodo (&lt;i&gt;«componente»&lt;/i&gt;)&lt;br&gt;• &lt;b&gt;[Rectángulo punteado]&lt;/b&gt; = Entorno de ejecución (&lt;i&gt;«execution environment»&lt;/i&gt;)&lt;br&gt;• &lt;b&gt;Línea + flecha abierta&lt;/b&gt; = Ruta de comunicación (&lt;i&gt;communication path&lt;/i&gt;) y flujo de datos (&lt;i&gt;entra / sale&lt;/i&gt;)&lt;br&gt;• &lt;b&gt;«usa» / «acceso»&lt;/b&gt; = Naturaleza de la dependencia entre nodos y componentes&lt;br&gt;• &lt;b&gt;Protocolo indicado sobre cada ruta:&lt;/b&gt; HTTPS/REST, WSS (onSnapshot), IMAP/SMTP, FTP, I/O Local" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=18;fillColor=#18181b;strokeColor=#52525b;fontColor=#e4e4e7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="780" y="900" width="660" height="165" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <!-- ===================================================================== -->
+  <!-- PÁGINA 2: 4.2 DIAGRAMA DE ARQUITECTURA DE COMPONENTES (ESTILO OSCURO) -->
+  <!-- ===================================================================== -->
+  <diagram id="arquitectura-uml" name="4.2 Arquitectura de Componentes">
+    <mxGraphModel dx="1850" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" background="#111318" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title-arch" value="DIAGRAMA DE ARQUITECTURA DE COMPONENTES – SISTEMA WEB RPA LAD-6819" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=22;fontStyle=1;fontColor=#ffffff;letterSpacing=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="25" width="1160" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- CAPA 1: FRONTEND SPA -->
+        <mxCell id="layer-front" value="&lt;i&gt;«layer / presentation»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Capa de Presentación – Frontend SPA (React + TypeScript en Vercel)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=5 5;verticalAlign=top;align=center;fillColor=#172554;strokeColor=#3b82f6;fontColor=#ffffff;fontSize=12;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="50" y="100" width="420" height="620" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c-app" value="&lt;i&gt;«componente vista»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Orquestador Vista Principal (App.tsx)&lt;/b&gt;&lt;br&gt;Control de estado de sesión y listener reactivo" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#090d16;strokeColor=#60a5fa;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="85" y="170" width="350" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c-login" value="&lt;i&gt;«componente UI»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Módulo de Autenticación (LoginScreen.tsx)&lt;/b&gt;&lt;br&gt;Captura y validación de credenciales" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#090d16;strokeColor=#60a5fa;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="85" y="280" width="350" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c-dash" value="&lt;i&gt;«componente UI»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Panel de Control y Despacho (Dashboard.tsx)&lt;/b&gt;&lt;br&gt;Selector de aliados (CDF, Continental, DXC) y carga" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#090d16;strokeColor=#60a5fa;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="85" y="390" width="350" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c-table" value="&lt;i&gt;«componente UI»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Monitor de Lotes en Vivo (JobsTable.tsx)&lt;/b&gt;&lt;br&gt;Cálculo de KPIs (useMemo) y filtrado instantáneo" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#090d16;strokeColor=#60a5fa;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="85" y="500" width="350" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c-fbsdk" value="&lt;i&gt;«componente adaptador»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Conector Firebase Web SDK (firebase.ts)&lt;/b&gt;&lt;br&gt;Instancias de Auth, Firestore y Storage" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#090d16;strokeColor=#60a5fa;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="85" y="610" width="350" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- CAPA 2: SERVICIOS CLOUD FIREBASE -->
+        <mxCell id="layer-baas" value="&lt;i&gt;«layer / cloud baas»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Capa de Servicios BaaS y Sincronización (Google Cloud Firebase)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=5 5;verticalAlign=top;align=center;fillColor=#422006;strokeColor=#f59e0b;fontColor=#ffffff;fontSize=12;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="660" y="100" width="440" height="620" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c-baas-auth" value="&lt;i&gt;«componente seguridad»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Proveedor de Identidad (Firebase Auth)&lt;/b&gt;&lt;br&gt;Emisión de Tokens JWT y validación de usuarioId" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#14120e;strokeColor=#fbbf24;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="705" y="190" width="350" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c-baas-db" value="&lt;i&gt;«componente persistencia reactiva»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Motor Documental NoSQL (Cloud Firestore)&lt;/b&gt;&lt;br&gt;Colección 'jobs' + Reglas de Seguridad (firestore.rules)&lt;br&gt;Publicación de eventos por WebSockets (onSnapshot)" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#14120e;strokeColor=#fbbf24;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="705" y="350" width="350" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c-baas-st" value="&lt;i&gt;«componente almacenamiento cloud»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Repositorio de Objetos (Firebase Storage)&lt;/b&gt;&lt;br&gt;Reglas de acceso (storage.rules)" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#14120e;strokeColor=#fbbf24;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="705" y="530" width="350" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- CAPA 3: BACKEND RPA PYTHON -->
+        <mxCell id="layer-back" value="&lt;i&gt;«layer / business &amp; rpa»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Capa de Negocio y Automatización RPA (Backend Python 3.12)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=5 5;verticalAlign=top;align=center;fillColor=#064e3b;strokeColor=#10b981;fontColor=#ffffff;fontSize=12;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="100" width="560" height="620" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c-back-orq" value="&lt;i&gt;«componente coordinador»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Orquestador RPA (main.py / api.py)&lt;/b&gt;&lt;br&gt;Coordina flujo End-to-End (Modo Buzón y Modo Manual)" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#091914;strokeColor=#34d399;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="170" width="480" height="85" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c-back-proc" value="&lt;i&gt;«componente motor de reglas»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Motor Polimórfico de Clientes (BaseClient + Pandas)&lt;/b&gt;&lt;br&gt;Implementaciones: ClienteCDF, ClienteContinental, ClienteDXC&lt;br&gt;Parametrizado por layout_config.yaml" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#091914;strokeColor=#34d399;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="290" width="480" height="105" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c-back-mail" value="&lt;i&gt;«componente integración»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Servicios de Correo y FTP (MailboxService, EmailService, ConexionFtp)&lt;/b&gt;&lt;br&gt;Ingesta IMAP, notificación SMTP con plantillas HTML y carga FTP" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#091914;strokeColor=#34d399;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="430" width="480" height="95" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c-back-track" value="&lt;i&gt;«componente observabilidad»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Sincronizador Cloud y Bitácora (firebase_service.py / ProcessTracker)&lt;/b&gt;&lt;br&gt;Persistencia en Firestore ('jobs') y control local (records.json)" style="shape=module;align=center;spacingLeft=18;verticalAlign=middle;whiteSpace=wrap;html=1;fillColor=#091914;strokeColor=#34d399;fontColor=#ffffff;fontSize=11;jettyWidth=16;jettyHeight=8;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="560" width="480" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- CONEXIONES ENTRE CAPAS -->
+        <mxCell id="ea-1" value="&lt;b&gt;«HTTPS / JWT»&lt;/b&gt;&lt;br&gt;entra: email/password&lt;br&gt;sale: token + usuarioId" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;strokeColor=#ffffff;strokeWidth=1.5;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#111318;" edge="1" parent="1" source="c-fbsdk" target="c-baas-auth">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="650" />
+              <mxPoint x="560" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="ea-2" value="&lt;b&gt;«WSS / onSnapshot»&lt;/b&gt;&lt;br&gt;entra: query(jobs, usuarioId)&lt;br&gt;sale: stream de lotes en vivo" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;startArrow=open;startFill=0;strokeColor=#fbbf24;strokeWidth=1.5;fontColor=#fde68a;fontSize=10;labelBackgroundColor=#111318;" edge="1" parent="1" source="c-fbsdk" target="c-baas-db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="650" />
+              <mxPoint x="600" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="ea-3" value="&lt;b&gt;«HTTPS / Admin SDK»&lt;/b&gt;&lt;br&gt;entra: lote procesado + estado&lt;br&gt;sale: confirmación escritura" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;strokeColor=#34d399;strokeWidth=1.5;fontColor=#86efac;fontSize=10;labelBackgroundColor=#111318;" edge="1" parent="1" source="c-back-track" target="c-baas-db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1190" y="610" />
+              <mxPoint x="1190" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- LEYENDA -->
+        <mxCell id="legend-arch" value="&lt;b&gt;SÍMBOLOS DEL DIAGRAMA DE ARQUITECTURA&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;b&gt;[Contenedor Punteado]&lt;/b&gt; = Capa lógica de la arquitectura (&lt;i&gt;«layer»&lt;/i&gt;: Presentación, Cloud BaaS, Backend RPA)&lt;br&gt;• &lt;b&gt;[Rectángulo con 2 pestañas]&lt;/b&gt; = Componente de software modular con responsabilidad única&lt;br&gt;• &lt;b&gt;Línea + flecha abierta&lt;/b&gt; = Flujo de comunicación inter-capa con protocolo y contrato de datos (&lt;i&gt;entra / sale&lt;/i&gt;)" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=18;fillColor=#18181b;strokeColor=#52525b;fontColor=#e4e4e7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="620" y="790" width="680" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

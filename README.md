@@ -2,10 +2,14 @@
 **Descuentos de Nómina — Motor Automatizado**  
 Desarrollado para **Blacksmith Research Colombia SAS**
 
-[![Estado](https://img.shields.io/badge/Estado-Producción%20🟢-brightgreen)]()
+> [!IMPORTANT]
+> **AVISO DE MIGRACIÓN DE ARQUITECTURA (ENTREGA FINAL - SIN PYTHON)**:  
+> Atendiendo a los requerimientos solicitados para la entrega (*"Pasar a JavaScript, Next.js, TypeScript, NO Python"*), este motor legacy en Python ha sido **completamente sustituido e integrado** en la arquitectura moderna **Fullstack Next.js 14 App Router** ubicada en el repositorio **`frontedRPEA`**.  
+> Todas las funcionalidades requeridas: **Carga Masiva de Planillas**, **Control de Acceso por Roles (RBAC: Admin, Supervisor, Analista)**, **Registro de Empresas con Reglas de Negocio Dinámicas**, **Carga de Pagos Únicos Individuales** y los **Endpoints REST API** se encuentran implementados y desplegados al 100% en el repositorio frontend.
+
+[![Estado](https://img.shields.io/badge/Estado-Migrado%20a%20Next.js%20🟢-brightgreen)]()
 [![Firebase](https://img.shields.io/badge/Firebase-Firestore%20🔥-orange)]()
-[![Python](https://img.shields.io/badge/Python-3.10+-blue)]()
-[![React](https://img.shields.io/badge/Dashboard-React%20+%20TypeScript-61DAFB)]()
+[![Stack](https://img.shields.io/badge/Stack-Next.js%2014%20|%20TypeScript-blue)]()
 
 ---
 
