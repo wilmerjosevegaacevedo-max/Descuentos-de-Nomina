@@ -63,6 +63,22 @@
             "asunto": "Descuento continental",
             "estado": "EXITOSO",
             "mensaje": ""
+        },
+        {
+            "id": "25",
+            "fecha": "2026-10-02 23:07:36",
+            "cliente": "DESCONOCIDO",
+            "asunto": "CDF nomina",
+            "estado": "FALLIDO",
+            "mensaje": "Cliente no identificado"
+        },
+        {
+            "id": "24",
+            "fecha": "2026-10-02 23:07:42",
+            "cliente": "continental",
+            "asunto": "Fwd: Descuento continental",
+            "estado": "EXITOSO",
+            "mensaje": ""
         }
     ]
 }

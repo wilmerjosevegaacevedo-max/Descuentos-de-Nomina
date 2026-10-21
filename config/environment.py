@@ -47,6 +47,19 @@ class Environment:
         self.aws_bucket_name = os.getenv("AWS_BUCKET_NAME")
         self.aws_region = os.getenv("AWS_REGION", "us-east-1")
 
+        # --- ORCHESTRATION & API ---
+        self.schedule_interval_minutes = int(os.getenv("SCHEDULE_INTERVAL_MINUTES", "15"))
+        self.frontend_origins = tuple(
+            origin.strip()
+            for origin in os.getenv(
+                "FRONTEND_ORIGINS",
+                "https://fronted-rpea-46dvuo59b-wilmerjosevegaacevedo-max.vercel.app,"
+                "https://fronted-rpea.vercel.app,"
+                "http://localhost:5173,http://127.0.0.1:5173",
+            ).split(",")
+            if origin.strip()
+        )
+
     def validate(self) -> bool:
         """
         Verifica que las variables críticas existan.
