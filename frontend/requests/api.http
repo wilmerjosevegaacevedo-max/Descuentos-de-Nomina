@@ -1,0 +1,68 @@
+### RPA LAD-6819 — Colección de solicitudes API
+### Ejecutar de arriba a abajo con la extensión REST Client (VS Code)
+
+@baseUrl = http://localhost:3000
+
+### ── EMPRESAS ─────────────────────────────────────────────
+
+### 1. Listar todas las empresas
+GET {{baseUrl}}/api/empresas
+Accept: application/json
+
+### 2. Crear empresa — éxito
+# @name crearEmpresa
+POST {{baseUrl}}/api/empresas
+Content-Type: application/json
+
+{
+  "nombre": "CDF Colombia SAS",
+  "nit": "900123456-1",
+  "email": "nomina@cdf.com.co",
+  "activa": true
+}
+
+### 3. Obtener empresa recién creada
+GET {{baseUrl}}/api/empresas/{{crearEmpresa.response.body.$.id}}
+Accept: application/json
+
+### 4. Actualizar empresa
+# @name actualizarEmpresa
+PUT {{baseUrl}}/api/empresas/{{crearEmpresa.response.body.$.id}}
+Content-Type: application/json
+
+{
+  "nombre": "CDF Colombia SAS — Actualizado",
+  "activa": false
+}
+
+### 5. Obtener empresa actualizada
+GET {{baseUrl}}/api/empresas/{{crearEmpresa.response.body.$.id}}
+Accept: application/json
+
+### ── ERRORES ──────────────────────────────────────────────
+
+### 6. Error 404 — empresa inexistente
+GET {{baseUrl}}/api/empresas/9999
+Accept: application/json
+
+### 7. Error 422 — NIT con formato inválido
+POST {{baseUrl}}/api/empresas
+Content-Type: application/json
+
+{
+  "nombre": "Empresa Inválida",
+  "nit": "ABCDEF",
+  "email": "mal@correo"
+}
+
+### 8. Error 400 — body no es JSON
+POST {{baseUrl}}/api/empresas
+Content-Type: application/json
+
+esto no es json válido
+
+### 9. Eliminar empresa
+DELETE {{baseUrl}}/api/empresas/{{crearEmpresa.response.body.$.id}}
+
+### 10. Error 404 — eliminar empresa ya eliminada
+DELETE {{baseUrl}}/api/empresas/{{crearEmpresa.response.body.$.id}}

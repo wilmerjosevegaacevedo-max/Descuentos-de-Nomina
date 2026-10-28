@@ -58,3 +58,12 @@ backend/files/salidas/
 Thumbs.db
 ~$*.docx
 ~$*.xlsx
+
+# -------------------------------------------------------
+# Prisma & SQLite
+# -------------------------------------------------------
+**/dev.db
+*.db
+*.db-journal
+**/generated/
+!**/.env.example

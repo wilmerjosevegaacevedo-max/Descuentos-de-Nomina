@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Empresa {
+  id        String     @id @default(uuid())
+  nombre    String
+  nit       String     @unique
+  email     String
+  activa    Boolean    @default(true)
+  creadaEn  DateTime   @default(now()) @map("creada_en")
+  planillas Planilla[]
+
+  @@map("empresas")
+}
+
+model Planilla {
+  id         String   @id @default(uuid())
+  empresaId  String   @map("empresa_id")
+  periodo    String
+  estado     String   @default("PENDIENTE")
+  totalPagos Float    @default(0) @map("total_pagos")
+  creadaEn   DateTime @default(now()) @map("creada_en")
+  empresa    Empresa  @relation(fields: [empresaId], references: [id], onDelete: Cascade)
+
+  @@map("planillas")
+}
