@@ -6,11 +6,15 @@ echo =======================================================
 echo Fecha y hora de inicio: %date% %time%
 echo.
 
-:: Ubicarse dinámicamente en la carpeta del backend
+:: Ubicarse dinamicamente en la carpeta del backend
 cd /d "%~dp0"
 
 echo Activando entorno virtual...
-call venv\Scripts\activate.bat
+if exist "venv\Scripts\activate.bat" (
+    call venv\Scripts\activate.bat
+) else if exist ".venv\Scripts\activate.bat" (
+    call .venv\Scripts\activate.bat
+)
 
 echo Ejecutando motor principal (main.py)...
 python main.py

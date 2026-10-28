@@ -17,7 +17,10 @@ frontend/.vercel/
 .vercel/
 *.tsbuildinfo
 
-# Frontend Environment Variables & Secrets
+# Frontend Runtime Files
+frontend/files/*
+!frontend/files/templates/
+frontend/firebase-key.json
 frontend/.env
 frontend/.env*.local
 .env
@@ -45,7 +48,9 @@ backend/.env
 backend/firebase-key.json
 firebase-key.json
 backend/.azure/
+.kilo/
 .azure/
+.kilo/
 backend/files/incoming/
 backend/files/jobs/
 backend/files/temp/
