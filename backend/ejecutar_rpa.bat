@@ -6,8 +6,8 @@ echo =======================================================
 echo Fecha y hora de inicio: %date% %time%
 echo.
 
-:: Forzar a Windows a ubicarse en la carpeta correcta del proyecto
-cd /d "C:\Users\wilme\.gemini\antigravity-ide\scratch\rpa_lad_6819"
+:: Ubicarse dinámicamente en la carpeta del backend
+cd /d "%~dp0"
 
 echo Activando entorno virtual...
 call venv\Scripts\activate.bat

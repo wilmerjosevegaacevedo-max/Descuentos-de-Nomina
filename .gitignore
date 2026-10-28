@@ -1,58 +1,60 @@
-# Entorno virtual
+# =======================================================
+# Monorepo RPA LAD-6819 — Git Ignore Rules
+# =======================================================
+
+# -------------------------------------------------------
+# Frontend (Next.js / React & Node.js)
+# -------------------------------------------------------
+frontend/node_modules/
+node_modules/
+frontend/.next/
+.next/
+frontend/out/
+out/
+frontend/dist/
+dist/
+frontend/.vercel/
+.vercel/
+*.tsbuildinfo
+
+# Frontend Environment Variables & Secrets
+frontend/.env
+frontend/.env*.local
+.env
+.env*.local
+
+# -------------------------------------------------------
+# Backend (Python & RPA Engine)
+# -------------------------------------------------------
+backend/venv/
+backend/.venv/
 venv/
 .venv/
-env/
-
-# Variables de entorno (secretos)
-.env
-
-# Archivos procesados
-files/
-
-# Imágenes
-IMG/
-
-# Logs
-logs/
-
-# Python cache
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-
-# Datos y archivos temporales
-records_data.json
-*.zip
+backend/__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+backend/.pytest_cache/
+.pytest_cache/
+backend/logs/*.log
+logs/*.log
 *.log
 
-# IDE
-.vscode/
-.idea/
-*.suo
-
-# Datos de referencia (archivos Excel locales)
-Derechos_Poliza.xlsx
-Homologacion_Empresa.xlsx
-layout_config copy.json
-
+# Backend Secrets & Runtime Files
+backend/.env
+backend/firebase-key.json
 firebase-key.json
-firebase-service-account.json
-fix_firebase.py
-crear_usuario.py
+backend/.azure/
+.azure/
+backend/files/incoming/
+backend/files/jobs/
+backend/files/temp/
+backend/files/salidas/
 
-# Frontend - Node
-node_modules/
-frontend/node_modules/
-
-# Frontend - Build
-dist/
-frontend/dist/
-
-# Frontend - TypeScript build info
-*.tsbuildinfo
-frontend/*.tsbuildinfo
-
-# Frontend - env
-frontend/.env
+# -------------------------------------------------------
+# Operating System & Temporary Files
+# -------------------------------------------------------
+.DS_Store
+Thumbs.db
+~$*.docx
+~$*.xlsx
